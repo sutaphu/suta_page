@@ -1,0 +1,165 @@
+<html>
+    <head>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Year');
+      data.addColumn('number', 'Carbon monoxide');
+      data.addColumn('number', 'Formaldehyde');
+      data.addColumn('number', 'Sulphur dioxide');
+      data.addColumn('number', 'Oxides of Nitrogen');
+
+      data.addRows([
+      ['2010',12.756,17.863,12.955,14.765],
+      ['2011',16.026,21.978,14.788,14.587],
+['2012',13.42,15.155,13.794,14.846],
+['2013',14.016,15.416,15.103,14.054],
+['2014',14.779,13.899,15.805,14.551],
+['2015',15.533,8.315,13.161,13.839],
+['2016',13.471,7.372,14.395,13.357]
+
+      
+      ]);
+
+      var options = {
+        hAxis: {
+            title: 'Year'
+          },
+          vAxis: {
+            title: 'Percent'
+          },
+        chart: {
+          title: 'Major air pollutants',
+          subtitle: 'The National Pollutant Inventory (NPI) tracks air pollutant emissions for industrial sources across Australia.'  
+        },
+        width: 900,
+        height: 500
+      };
+
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+
+    }
+
+
+
+
+    google.charts.load('current', {'packages':['corechart']});
+	google.charts.setOnLoadCallback(drawPiechart);
+    
+    function drawPiechart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Emission type', 'Tonnes per annum'],
+          ['Carbon trioxide (CO)',159239],
+['Volatile Organic Compounds (VOCs)',20844],
+['Oxides of Nitrogen: (NOx)',68141],
+['PM2.5',2546],
+['PM10',3108],
+['Benzene',750],
+['Toluene',1540],
+['Xylenes',1595],
+['Formaldehyde',390]
+
+        ]);
+
+        var options = {
+           
+                title: 'Vehicle emissions'
+            
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+
+
+
+
+
+
+
+     google.charts.load('current', {'packages':['corechart']});
+	 google.charts.setOnLoadCallback(drawColumnChart);
+
+      function drawColumnChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["State","Total" , { role: "style" },"Zero" ],
+        ["Queensland All",18.563, "#b87333",0],
+        ["Queensland Stationary energy",-39.46, "silver",0],
+        ["Queensland Transport",-11.327, "gold",0],
+        ["Queensland Fugitive emissions",-14.355, "color: #e5e4e2",0],
+
+        ["Queensland Industrial processes",-2.598, "#b87333",0],
+        ["Queensland Agriculture",0.28, "silver",0],
+        ["Queensland Land use, land-use change and forestry",85.692, "gold",0],
+        ["Queensland Waste",0.332, "color: #e5e4e2",0]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Total annual greenhouse gas emissions",
+        bar: {groupWidth: "65%"},
+        legend: { position: "none" },
+        hAxis: {
+            title: 'Sector'
+          },
+          vAxis: {
+            title: 'Percent'
+          }
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+
+
+
+      
+      </script>
+    </head>
+    <body>
+        <div>
+            <div style="width: 50%;float: left;">
+                <div id="linechart_material" style="width: 900px; height: 500px;"></div>		
+            </div>		
+            <div id="piechart" style="width: 900px; height: 500px;float: left;width: 50%;"></div>
+        </div>
+        <div>
+            <div id="columnchart_values" style="width: 900px;height: 500px;float: left;width: 50%;"></div>
+            <div id="drawDeviation1" style="width: 900px;height: 500px;float: left;width: 50%;"></div>		
+        </div>
+        <div>
+            <div id="drawTime2" style="width: 900px;height: 500px;float: left;width: 50%;"></div>
+            <div id="drawDeviation2" style="width: 900px;height: 500px;float: left;width: 50%;"></div>
+        </div>	
+        <div>
+            <div id="drawTime3" style="width: 900px;height: 500px;float: left;width: 50%;"></div>
+            <div id="drawDeviation3" style="width: 900px;height: 500px;float: left;width: 50%;"></div>		
+        </div>
+        <div>
+            <div id="drawTime4" style="width: 900px;height: 500px;float: left;width: 50%;"></div>
+            <div id="drawDeviation4" style="width: 900px;height: 500px;float: left;width: 50%;"></div>		
+        </div>
+        <div>
+            <div id="Distribution" style="width: 900px;height: 500px;float: left;width: 50%;"></div>
+            <div id="Distribution2" style="width: 900px;height: 500px;float: left;width: 50%;"></div>		
+        </div>
+        <div>
+            <div id="divCorrelation" style="width: 900px;height: 500px;float: left;width: 100%;"></div>	
+        </div>
+    </body>
+  </html>
